@@ -3,6 +3,8 @@ package com.example.parcial.controllers.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import com.example.parcial.R
 import com.example.parcial.adapter.PeliculaAdapter
 import com.example.parcial.models.ApiResponse
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     private fun getFragmentFor(item: MenuItem): Fragment {
         return when(item.itemId) {
             R.id.menu_home -> FragmentPelicula()
-
+            else ->FragmentPelicula()
 
         }
     }

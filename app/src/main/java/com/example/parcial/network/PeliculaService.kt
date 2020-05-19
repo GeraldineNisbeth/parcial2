@@ -9,5 +9,5 @@ import retrofit2.http.Query
 
 interface PeliculaService {
     @GET("movie")
-    fun getPeliculas(@Header("api_key") api_key: String, @Query("query") query : String):Call<ApiResponse>
+    fun getPeliculas(@Query("api_key") api_key: String, @Query("query") query : String):Call<ApiResponse>
 }

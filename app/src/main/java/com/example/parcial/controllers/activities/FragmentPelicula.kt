@@ -37,7 +37,9 @@ class FragmentPelicula : Fragment(), PeliculaAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.rvPeliculas)
-        loadPeliculas(view.context)
+        btSearch.setOnClickListener{
+            loadPeliculas(view.context)
+        }
     }
 
     private fun loadPeliculas(context: Context) {
@@ -55,12 +57,13 @@ class FragmentPelicula : Fragment(), PeliculaAdapter.OnItemClickListener {
 
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 if(response.isSuccessful){
+                    Log.d("Fail3", response.code().toString())
                     val peliculas : List<Pelicula> = response.body()!!.results ?: ArrayList()
                     recyclerView.layoutManager  = LinearLayoutManager(context)
                     recyclerView.adapter = PeliculaAdapter(peliculas, context, this@FragmentPelicula)
                 }
                 else{
-                    Log.d("Fail", response.code().toString())
+                    Log.d("Fail2", response.code().toString())
                 }
             }
 

@@ -4,9 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.parcial.models.Converters
 import com.example.parcial.models.Pelicula
 
 @Database(entities = [Pelicula::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class PeliculaDB:RoomDatabase() {
     abstract fun getPeliculaDAO() : PeliculaDao
 
@@ -16,7 +19,7 @@ abstract class PeliculaDB:RoomDatabase() {
         fun getInstance(context: Context) : PeliculaDB {
             if (INSTANCE == null) {
                 INSTANCE = Room
-                    .databaseBuilder(context, PeliculaDB::class.java, "pelicula.db")
+                    .databaseBuilder(context, PeliculaDB::class.java, "pelicula3.db")
                     .allowMainThreadQueries()
                     .build()
             }
